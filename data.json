@@ -1,0 +1,114 @@
+{
+    "personal": {
+      "name": "Alessandro Casadei",
+      "title": "MSc Data Science and Engineering Student",
+      "tagline": "Interested in NLP, LLM-based systems and reliable data integration.",
+      "bio": "MSc student in Data Science and Engineering with strong foundations in statistics, machine learning and software development. Experienced in designing data pipelines and building RAG systems.",
+      "location": "Turin, Italy",
+      "email": "alessandroocasadei@gmail.com",
+      "avatar_initials": "AC",
+      "social": {
+        "github": "https://github.com/thestcasa",
+        "linkedin": "https://linkedin.com/in/alessandrocasadei",
+        "cv_pdf": "/static/Alessandro_Casadei_2026.pdf"
+      }
+    },
+    "experience": [
+      {
+        "id": 1,
+        "role": "Data Engineer",
+        "company": "Telematica Informatica S.r.l. (Intesa Sanpaolo with Accenture)",
+        "company_url": null,
+        "location": "Full-remote",
+        "start": "Sep 2025",
+        "end": "Present",
+        "current": true,
+        "description": "Designed Python/SQL pipelines for cleaning, reconciliation, and KPI generation on structured datasets. Implemented regression-based forecasting and validation checks ensuring reproducibility.",
+        "tags": ["Python", "SQL", "Data Integration", "Forecasting", "Validation"]
+      },
+      {
+        "id": 2,
+        "role": "Software Engineer",
+        "company": "Telematica Informatica S.r.l. (Gruppo Centro Paghe)",
+        "company_url": null,
+        "location": "Turin, Italy",
+        "start": "Mar 2025",
+        "end": "Sep 2025",
+        "current": false,
+        "description": "Developed Node.js services and REST APIs for workflow automation and dashboards. Built a retrieval-augmented generation (RAG) assistant using embeddings and FAISS for internal document querying.",
+        "tags": ["Node.js", "REST APIs", "LLM", "RAG", "FAISS", "Embeddings"]
+      }
+    ],
+    "projects": [
+      {
+        "id": 1,
+        "title": "News Classification Pipeline",
+        "description": "End-to-end NLP classification using TF-IDF, logistic regression, and tree-based models with leakage-aware cross-validation and error analysis.",
+        "tags": ["NLP", "Python", "TF-IDF", "Scikit-learn", "Classification"],
+        "github": "https://github.com/thestcasa",
+        "demo": null,
+        "featured": true,
+        "year": "2026"
+      },
+      {
+        "id": 2,
+        "title": "Federated Learning Framework",
+        "description": "Distributed neural network training (DINO VIT) with non-IID clients and experiment tracking via Weights & Biases.",
+        "tags": ["Federated Learning", "DINO VIT", "W&B", "Distributed Systems"],
+        "github": "https://github.com/thestcasa",
+        "demo": null,
+        "featured": true,
+        "year": "2025"
+      },
+      {
+        "id": 3,
+        "title": "Numerical Optimization Project",
+        "description": "Implemented Modified Newton and Newton-CG methods, analyzing convergence and scalability.",
+        "tags": ["Numerical Optimization", "Python", "Mathematics"],
+        "github": "https://github.com/thestcasa",
+        "demo": null,
+        "featured": false,
+        "year": "2025"
+      }
+    ],
+    "education": [
+      {
+        "id": 1,
+        "degree": "M.Sc. Data Science and Engineering",
+        "institution": "Politecnico di Torino",
+        "institution_url": "https://www.polito.it",
+        "location": "Turin, Italy",
+        "start": "Oct 2024",
+        "end": "Present",
+        "current": true,
+        "description": "Relevant Coursework: Machine & Deep Learning, Mathematics for ML, Numerical Optimization, Distributed Architectures, Deep NLP.",
+        "gpa": null
+      },
+      {
+        "id": 2,
+        "degree": "B.Sc. Management Engineering",
+        "institution": "Politecnico di Torino",
+        "institution_url": "https://www.polito.it",
+        "location": "Turin, Italy",
+        "start": "Sep 2021",
+        "end": "Mar 2025",
+        "current": false,
+        "description": "Thesis: Markowitz Portfolio Optimization in Python: preprocessing, PCA-based analysis, efficient frontier and backtesting. Coursework: Statistics, Econometrics, Operations Research, OOP, Algorithms.",
+        "gpa": null
+      }
+    ],
+    "certifications": [],
+    "skills": {
+
+"languages": ["Python", "SQL", "JavaScript", "Bash"],
+
+"ml_data": ["PyTorch", "scikit-learn", "Weights & Biases", "Spark", "pandas", "NumPy"],
+
+"web_tools": ["FastAPI", "Jinja2", "React", "Tailwind CSS"],
+
+"infra_devops": ["Git", "Docker", "Linux", "dbt", "MLflow"],
+
+"languages_spoken": ["Italian (native)", "English (C1)", "French (C1)", "Spanish (learning)"]
+
+}
+  }

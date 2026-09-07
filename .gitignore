@@ -1,4 +1,21 @@
+# Python
+.venv/
 venv/
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+
+# Local configuration
 .env
+.env.*
+!.env.example
+
+# QA / tooling artifacts
+.qa/
+playwright-report/
+test-results/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

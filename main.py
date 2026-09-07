@@ -22,7 +22,7 @@ allowed_origins = [
     origin.strip()
     for origin in os.getenv(
         "CONTACT_ALLOWED_ORIGINS",
-        "https://alessandrocasadei.com,https://www.alessandrocasadei.com",
+        "https://alessandrocasadei.com,https://www.alessandrocasadei.com,https://alessandro-casadei-static.onrender.com",
     ).split(",")
     if origin.strip()
 ]

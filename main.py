@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from portfolio_app.contact_routes import router as contact_router
@@ -15,6 +17,23 @@ from portfolio_app.routes import router as site_router
 ROOT = Path(__file__).parent
 
 app = FastAPI(title="Alessandro Casadei", docs_url=None, redoc_url=None)
+
+allowed_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CONTACT_ALLOWED_ORIGINS",
+        "https://alessandrocasadei.com,https://www.alessandrocasadei.com",
+    ).split(",")
+    if origin.strip()
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
+    allow_methods=["POST", "OPTIONS"],
+    allow_headers=["Accept", "Content-Type"],
+)
+
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
 app.include_router(site_router)
 app.include_router(contact_router)
@@ -32,8 +51,8 @@ async def security_headers(request: Request, call_next):
     response.headers.setdefault(
         "Content-Security-Policy",
         "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; "
-        "script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; "
-        "form-action 'self'; base-uri 'self'; frame-ancestors 'none'",
+        "script-src 'self' 'unsafe-inline'; connect-src 'self' https://alessandro-casadei.onrender.com; "
+        "font-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'",
     )
     if request.url.path.startswith("/static/"):
         response.headers.setdefault("Cache-Control", "public, max-age=86400")

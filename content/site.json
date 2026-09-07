@@ -1,0 +1,87 @@
+{
+  "site": {
+    "name": "Alessandro Casadei",
+    "role": "AI, Data & Automation Engineer",
+    "url": "https://alessandrocasadei.com",
+    "email": "alessandroocasadei@gmail.com",
+    "location": "Barcelona, Spain",
+    "hero": "I build AI, data and automation systems that turn messy workflows into reliable software.",
+    "intro": "From ML pipelines and LLM evaluation to APIs, operational automation and internal tools, I focus on the engineering around the model: data, workflow state, validation, interfaces and the path to something people can actually use.",
+    "availability": "Open to AI / ML / Data / Automation engineering opportunities from 2027.",
+    "cv": "/static/Alessandro_Casadei_CV.pdf",
+    "github": "https://github.com/thestcasa",
+    "linkedin": "https://www.linkedin.com/in/alessandrocasadei",
+    "og_image": "/static/IMG_0520.JPG"
+  },
+  "current": {
+    "label": "Now",
+    "role": "Business Analysis & Data Science — RevOps",
+    "company": "papernest",
+    "location": "Barcelona",
+    "summary": "Working across RevOps, data, AI and automation: operational workflows, analysis, CRM/process automation and AI-assisted internal tooling."
+  },
+  "experience": [
+    {
+      "period": "Jul 2026 — Present",
+      "role": "Business Analysis & Data Science Intern — RevOps",
+      "company": "papernest",
+      "location": "Barcelona, Spain",
+      "summary": "Work across RevOps, data, AI and automation, with an emphasis on operational systems rather than isolated analyses.",
+      "details": [
+        "Build and improve recurring data and operational workflows used by RevOps teams.",
+        "Prototype AI-assisted internal tools and automation where they remove repetitive work or improve decision support.",
+        "Work with CRM/process tooling, APIs and data analysis across cross-functional operational problems."
+      ],
+      "tools": ["Python","SQL","APIs","HubSpot","Make"]
+    },
+    {
+      "period": "Sep 2025 — Jul 2026",
+      "role": "ICT Consultant · Data Engineering",
+      "company": "T.I. Telematica Informatica — client work with Accenture / Intesa Sanpaolo",
+      "location": "Remote / Italy",
+      "summary": "Designed Python/SQL pipelines for cleaning, reconciliation, KPI generation, forecasting and repeatable validation on structured datasets.",
+      "details": [
+        "Built data-processing and reconciliation pipelines around structured operational datasets.",
+        "Implemented regression-based forecasting and validation checks with reproducibility in mind.",
+        "Worked inside a consulting delivery environment where outputs had to be understandable and operationally usable."
+      ],
+      "tools": ["Python","SQL","Data pipelines","Forecasting"]
+    },
+    {
+      "period": "Mar 2025 — Sep 2025",
+      "role": "ICT Consultant · Software Engineering",
+      "company": "T.I. Telematica Informatica — client: Gruppo Centro Paghe",
+      "location": "Turin, Italy",
+      "summary": "Developed Node.js services, REST APIs and workflow automation, including an internal RAG assistant for document querying.",
+      "details": [
+        "Built backend services and APIs for workflow automation and dashboard use cases.",
+        "Implemented a retrieval-augmented assistant using embeddings and FAISS for internal documents.",
+        "Connected software components around actual business workflows rather than treating the model as a standalone demo."
+      ],
+      "tools": ["Node.js","REST APIs","RAG","FAISS","Embeddings"]
+    }
+  ],
+  "education": [
+    {"period":"2024 — 2027","degree":"MSc Data Science and Engineering","institution":"Politecnico di Torino","summary":"Machine learning, deep learning, distributed architectures, databases, data engineering, optimization and NLP."},
+    {"period":"2021 — 2025","degree":"BSc Management Engineering","institution":"Politecnico di Torino","summary":"Engineering, statistics, econometrics, operations research and software foundations. Thesis work included portfolio optimization in Python."}
+  ],
+  "toolbox": [
+    {"label":"Build systems","items":["Python","FastAPI","TypeScript","React / Next.js","REST APIs","PostgreSQL","Redis","Docker"]},
+    {"label":"Model & evaluate","items":["scikit-learn","PyTorch","CatBoost","Transformers","PEFT / LoRA","W&B","ML evaluation"]},
+    {"label":"Data & automation","items":["SQL","pandas","data pipelines","workflow automation","HubSpot","Make","CRM operations"]},
+    {"label":"Working languages","items":["Italian — native","English — C1","French — C1","Spanish — learning"]}
+  ],
+  "services": [
+    {"number":"01","title":"Workflow automation","problem":"Manual handoffs, copying between tools, repetitive admin, brittle spreadsheets and recurring tasks that depend on someone remembering the next step.","response":"Map the process, remove unnecessary steps, connect APIs and systems, and build the smallest reliable automation or internal tool that closes the loop.","examples":["API integrations","CRM workflows","internal tools","Make / automation flows"]},
+    {"number":"02","title":"Internal AI systems","problem":"Knowledge scattered across documents, repetitive operational questions, manual research and unstructured inputs that are expensive to process by hand.","response":"Build controlled AI-assisted workflows with explicit sources, validation and human decision points instead of a generic chatbot pasted onto the process.","examples":["RAG / retrieval","structured LLM workflows","evaluation","guardrails"]},
+    {"number":"03","title":"RevOps & data automation","problem":"CRM operations, recurring reporting, manual data manipulation and disconnected systems that make operational decisions slower than they should be.","response":"Create pipelines, synchronisation, automated reporting, enrichment and decision-support surfaces that reduce recurring operational load.","examples":["SQL / pipelines","CRM automation","reporting","data synchronisation"]},
+    {"number":"04","title":"AI / process opportunity audit","problem":"A team knows it should use AI or automation but does not yet know where the economics, data and workflow constraints make it worthwhile.","response":"Map processes, identify repeatable pain, rank opportunities by value and feasibility, then prototype the strongest candidate before committing to a larger build.","examples":["process mapping","ROI / feasibility","prototype","implementation plan"]}
+  ],
+  "engagement": [
+    {"step":"01","title":"Diagnose","text":"Understand the workflow, users, constraints and where time or quality is actually being lost."},
+    {"step":"02","title":"Prototype","text":"Test the smallest technically honest solution against real inputs before scaling scope."},
+    {"step":"03","title":"Ship","text":"Build the integration, data path, interface and failure handling needed for regular use."},
+    {"step":"04","title":"Handover","text":"Document the system, expose the important controls and make ongoing operation understandable."}
+  ],
+  "project_order": ["careeros","tiser-temporal-reasoning","credit-default-prediction","news-classification-pipeline","regime-residual-portfolio","federated-vision-transformers","network-dynamics-learning"]
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "news-classification-pipeline",
+  "title": "News Classification Pipeline",
+  "eyebrow": "NLP · data quality · evaluation discipline",
+  "year": "2026",
+  "featured": true,
+  "case_study": true,
+  "repo": "https://github.com/thestcasa/news-classification-pipeline",
+  "repo_label": "thestcasa/news-classification-pipeline",
+  "role": "Pipeline design, data-quality controls and evaluation workflow",
+  "collaboration": null,
+  "summary": "A leakage-aware multiclass news classifier built around schema validation, duplicate analysis, drift checks, sparse text features and stratified cross-validation.",
+  "proof_label": "Engineering focus",
+  "proof_value": "Leakage-aware",
+  "proof_detail": "Evaluation discipline and data-quality controls are first-class stages of the pipeline.",
+  "visual": "/static/projects/news.svg",
+  "visual_alt": "News classification pipeline showing schema and leakage checks, sparse text and metadata features, cross-validation, model selection and reporting.",
+  "problem": "Text classification can look strong for the wrong reasons when duplicates, source effects or train/evaluation overlap leak label information. The project is structured around making the reported validation defensible before choosing a classifier.",
+  "built": "The workflow validates schemas, audits duplicates and overlap, checks development/evaluation drift, removes cross-label duplicate problems, combines word and character TF-IDF with source, ranking, timestamp and missingness features, then compares linear models under stratified cross-validation.",
+  "decisions": [
+    {"title":"Audit before modeling.","text":"Duplicate, overlap, missingness and drift checks happen before model selection so suspicious signal is visible instead of buried inside a score."},
+    {"title":"Use sparse models that fit the data.","text":"Word and character TF-IDF plus metadata form one sparse design matrix, making Linear SVM a deliberate baseline rather than reaching for a larger neural model by default."},
+    {"title":"Record fold-level evidence.","text":"Cross-validation outputs include per-class metrics, confusion matrices, out-of-fold counts and fold diagnostics rather than one train/test number."}
+  ],
+  "results": [
+    {"value":"3","label":"signal families","detail":"text n-grams, metadata, time/missingness features"},
+    {"value":"k-fold","label":"evaluation","detail":"stratified CV with per-class and fold-level diagnostics"},
+    {"value":"1","label":"unified entry point","detail":"the complete path includes leakage cleaning before training"}
+  ],
+  "constraints": [
+    "The repository does not present a single headline test score as the project's main claim.",
+    "Model choice is intentionally conservative: linear sparse models are a strong fit for the feature space.",
+    "The value of the project is the defensible workflow around messy text inputs, not architectural novelty."
+  ],
+  "demonstrates": ["NLP pipelines","TF-IDF","Linear SVM","data leakage prevention","distribution checks","reproducible evaluation"]
+}

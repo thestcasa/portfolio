@@ -1,0 +1,36 @@
+{
+  "slug": "federated-vision-transformers",
+  "title": "Federated Vision Transformers",
+  "eyebrow": "deep learning · federated learning · efficient adaptation",
+  "year": "2025",
+  "featured": false,
+  "case_study": true,
+  "repo": "https://github.com/thestbobo/DLML_FL_project",
+  "repo_label": "thestbobo/DLML_FL_project",
+  "role": "Collaborative implementation and experiment configuration",
+  "collaboration": "Collaborative project. Repository hosted by a collaborator; contributions are presented as team work.",
+  "summary": "A collaborative research codebase comparing centralized and federated Vision Transformer training on CIFAR-100 with DINO backbones, LoRA and TaLoS-style model editing.",
+  "proof_label": "Research surface",
+  "proof_value": "Central + federated",
+  "proof_detail": "The same codebase supports centralized and client-server experiments with multiple fine-tuning strategies.",
+  "visual": "/static/projects/federated.svg",
+  "visual_alt": "Federated learning diagram showing several non-IID clients fine-tuning Vision Transformer models and sending updates to a central aggregation server.",
+  "problem": "Federated visual learning combines non-IID data, distributed optimization and constrained client resources. The project explores whether parameter-efficient fine-tuning and model-editing strategies can be evaluated in a shared centralized/federated codebase.",
+  "built": "The repository includes centralized and federated training scripts, a simulated client/server core, ViT models with DINO-pretrained backbones, LoRA and TaLoS-style editing modules, YAML configuration and Weights & Biases experiment tracking.",
+  "decisions": [
+    {"title":"Keep centralized and federated paths comparable.","text":"Shared model and configuration surfaces reduce the number of moving parts when comparing training modes."},
+    {"title":"Make adaptation strategy configurable.","text":"Dense, LoRA and pruning/editing strategies can be switched through configuration rather than forked experiments."},
+    {"title":"Treat heterogeneity as part of the setup.","text":"The client-server simulation is designed around non-IID client data and distributed aggregation instead of an IID toy assumption."}
+  ],
+  "results": [
+    {"value":"3","label":"fine-tuning modes","detail":"dense, LoRA and TaLoS-style editing"},
+    {"value":"ViT","label":"backbone","detail":"DINO-pretrained Vision Transformer features"},
+    {"value":"W&B","label":"tracking","detail":"sweeps and experiment logging integrated into the workflow"}
+  ],
+  "constraints": [
+    "This is collaborative academic research, not a production federated-learning platform.",
+    "The repository README does not support a single headline performance number, so the site does not invent one.",
+    "The work is presented with explicit collaborative attribution."
+  ],
+  "demonstrates": ["federated learning","Vision Transformers","DINO","LoRA","model editing / pruning","distributed experimentation"]
+}

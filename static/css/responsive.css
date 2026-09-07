@@ -1,0 +1,61 @@
+@media (max-width: 900px) {
+  .desktop-nav { display: none; }
+  .mobile-nav { display: block; }
+  .hero-grid, .intro-grid, .case-title-grid, .about-grid, .consulting-preview, .credibility-grid, .education-grid, .limitation-grid, .demonstrates-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero { min-height: auto; }
+  .hero-main { padding-top: 2rem; }
+  .hero-rail { max-width: 640px; }
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .proof-grid p:nth-child(2) { border-right: 0; }
+  .proof-grid p:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .split-heading { grid-template-columns: 1fr; gap: 1.2rem; }
+  .project-row { grid-template-columns: 48px 1fr; }
+  .project-visual { grid-column: 2; }
+  .contact-band-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .contact-band .button-row { justify-content: flex-start; }
+  .service-row { grid-template-columns: 50px 1fr; }
+  .service-row > div:last-child { grid-column: 2; }
+  .engagement-grid, .metric-grid { grid-template-columns: 1fr 1fr; }
+  .engagement-grid article:nth-child(2), .metric:nth-child(2) { border-right: 0; }
+  .engagement-grid article:nth-child(-n+2), .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .archive-row { grid-template-columns: 70px 1fr auto; }
+  .archive-row p { grid-column: 2 / -1; }
+  .case-summary-grid { grid-template-columns: 1fr 1fr; }
+  .case-proof-block { grid-column: 1 / -1; max-width: 420px; }
+  .next-project-grid { flex-wrap: wrap; }
+}
+
+@media (max-width: 620px) {
+  .shell { width: min(calc(100% - 30px), var(--max)); }
+  .section { padding: 68px 0; }
+  .brand-copy small { display: none; }
+  .cv-link { display: none; }
+  .nav-shell { min-height: 66px; }
+  .hero h1 { font-size: clamp(3.2rem, 16vw, 5.5rem); }
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof-grid p { border-right: 0; border-bottom: 1px solid var(--line); min-height: auto; }
+  .proof-grid p:last-child { border-bottom: 0; }
+  .project-row { grid-template-columns: 34px minmax(0, 1fr); gap: 1rem; }
+  .project-copy h2, .project-copy h3 { font-size: 2.35rem; }
+  .project-proof { grid-template-columns: 1fr; }
+  .project-proof span { grid-row: auto; }
+  .timeline-item { grid-template-columns: 1fr; gap: .5rem; }
+  .decision-grid, .toolbox-grid, .engagement-grid, .metric-grid, .principle-grid, .form-two, .case-summary-grid { grid-template-columns: 1fr; }
+  .decision:nth-child(odd), .toolbox-grid section:nth-child(odd), .engagement-grid article, .metric { border-right: 0; }
+  .decision:nth-child(even), .toolbox-grid section:nth-child(even), .engagement-grid article + article { padding-left: 0; }
+  .engagement-grid article, .metric { border-bottom: 1px solid var(--line); }
+  .engagement-grid article:last-child, .metric:last-child { border-bottom: 0; }
+  .service-row { grid-template-columns: 34px 1fr; gap: 1rem; }
+  .archive-row { grid-template-columns: 55px 1fr; gap: .7rem 1rem; }
+  .archive-row > span:last-child { grid-column: 2; }
+  .archive-row p { grid-column: 2; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-links { flex-wrap: wrap; }
+  .education-row { grid-template-columns: 1fr; gap: .4rem; }
+  .next-project-grid p { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}

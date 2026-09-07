@@ -1,0 +1,38 @@
+{
+  "slug": "tiser-temporal-reasoning",
+  "title": "TISER Temporal Reasoning",
+  "eyebrow": "LLM research · reproduction · domain adaptation",
+  "year": "2026",
+  "featured": true,
+  "case_study": true,
+  "repo": "https://github.com/thestbobo/tiser_temporal_reasoning_extension",
+  "repo_label": "thestbobo/tiser_temporal_reasoning_extension",
+  "role": "Collaborative research; contributed tennis-domain adaptation and integration of the main / tennis training-evaluation workflows",
+  "collaboration": "Collaborative project. Repository hosted by a collaborator; ownership is not presented as solo work.",
+  "summary": "A reproduction of ACL 2025 TISER on Qwen2.5-7B, extended with a context-memory conflict probe and a professional-tennis temporal reasoning adaptation study.",
+  "proof_label": "Full-test reproduction",
+  "proof_value": "0.949 F1",
+  "proof_detail": "Macro F1 across the five in-domain splits; macro EM 0.878 over 22,014 test examples.",
+  "visual": "/static/projects/tiser.svg",
+  "visual_alt": "TISER pipeline showing structured temporal traces, LoRA fine-tuning, baseline evaluation, context-memory conflict analysis and tennis domain adaptation.",
+  "problem": "The project asks two questions beyond simply running an LLM benchmark: can the structured temporal-reasoning target from TISER be faithfully reproduced, and does that reasoning behaviour transfer when the model is pushed into conflicting context or a new domain?",
+  "built": "The repository fine-tunes Qwen2.5-7B-Instruct with LoRA on the released TISER training data, evaluates exact match and token F1 on the full benchmark, then adds two experimental branches: a context-memory conflict probe and a tennis adaptation pipeline with audited synthetic examples and continued fine-tuning.",
+  "decisions": [
+    {"title":"Reproduce before extending.","text":"The baseline uses the released prompt/output format and full training/evaluation path before interpreting extension results."},
+    {"title":"Keep evaluation split-aware.","text":"Five in-domain datasets define the reported macro; the OOD ToT-semantic split is reported separately rather than blended into a flattering aggregate."},
+    {"title":"Test failure modes, not just scores.","text":"The context-memory study measures whether the model follows edited evidence over memorized facts and audits whether the reflection actually identifies the contradiction."},
+    {"title":"Treat domain adaptation as an experiment.","text":"Tennis examples are audited, converted into the same structured format and compared across base, transferred and continued-adaptation conditions."}
+  ],
+  "results": [
+    {"value":"0.878","label":"macro EM","detail":"five in-domain splits on the full TISER test set"},
+    {"value":"0.949","label":"macro F1","detail":"22,014 total evaluated examples"},
+    {"value":"0.732","label":"tennis EM","detail":"7B TISER continued adaptation; F1 0.856"},
+    {"value":"4.2%","label":"reflection catch rate","detail":"rows where the reflection explicitly names the context-memory contradiction"}
+  ],
+  "constraints": [
+    "The baseline reproduction does not exactly match every number in the paper; the repository reports the reproduced numbers rather than hiding the gap.",
+    "The OOD ToT-semantic split is substantially harder and is excluded from the in-domain macro by design.",
+    "The conflict study shows that a structured reflection can improve behaviour without reliably verbalising the contradiction."
+  ],
+  "demonstrates": ["LoRA / PEFT","Qwen models","research reproduction","LLM evaluation","synthetic data pipelines","domain adaptation"]
+}

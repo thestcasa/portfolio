@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-intro section about-hero">
+  <div class="shell about-grid">
+    <div><p class="kicker">About</p><h1>Engineering across software, data and operational systems.</h1><p class="large-copy">I started from Management Engineering, moved into backend and data consulting, and am now finishing an MSc in Data Science & Engineering while working in RevOps at papernest.</p><p>That path is why I am more interested in the full system than in a model in isolation: the data that feeds it, the API around it, the workflow state, the interface, the evaluation and the person who has to operate it afterwards.</p></div>
+    <figure class="portrait"><img src="/static/IMG_0520.JPG" alt="Portrait of Alessandro Casadei"><figcaption>Barcelona / Turin / Aosta — working across engineering, data and automation.</figcaption></figure>
+  </div>
+</section>
+
+<section class="section section-ruled">
+  <div class="shell">
+    <div class="section-heading"><p class="kicker">Experience</p><h2>What I have worked on.</h2></div>
+    <div class="timeline">
+      {% for item in experience %}
+      <article class="timeline-item">
+        <p class="timeline-period">{{ item.period }}</p>
+        <div><h3>{{ item.role }}</h3><p class="timeline-company">{{ item.company }} · {{ item.location }}</p><p>{{ item.summary }}</p><ul class="plain-list">{% for detail in item.details %}<li>{{ detail }}</li>{% endfor %}</ul><p class="tool-line">{{ item.tools | join(' · ') }}</p></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section education-section">
+  <div class="shell education-grid">
+    <div><p class="kicker">Education</p><h2>Useful foundation, not the headline.</h2></div>
+    <div>
+      {% for item in education %}<article class="education-row"><span>{{ item.period }}</span><div><h3>{{ item.degree }}</h3><p class="timeline-company">{{ item.institution }}</p><p>{{ item.summary }}</p></div></article>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section toolbox-section">
+  <div class="shell">
+    <div class="section-heading split-heading"><div><p class="kicker">Toolbox</p><h2>Grouped by what I use it for.</h2></div><p>The projects are the evidence. This is only the index.</p></div>
+    <div class="toolbox-grid">{% for group in toolbox %}<section><h3>{{ group['label'] }}</h3><p>{{ group['items'] | join(' · ') }}</p></section>{% endfor %}</div>
+  </div>
+</section>
+
+<section class="section contact-band">
+  <div class="shell contact-band-grid"><p class="kicker">Recruiter path</p><h2>{{ site.availability }}</h2><div class="button-row"><a class="button button-primary" href="{{ site.cv }}" target="_blank" rel="noopener">Open CV ↗</a><a class="button button-quiet" href="/contact?topic=hiring">Hiring inquiry</a></div></div>
+</section>
+{% endblock %}

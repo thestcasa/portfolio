@@ -1,0 +1,36 @@
+{
+  "slug": "regime-residual-portfolio",
+  "title": "Regime Residual Portfolio",
+  "eyebrow": "time-aware ML · uncertainty · portfolio research",
+  "year": "2026",
+  "featured": false,
+  "case_study": true,
+  "repo": "https://github.com/thestcasa/RegimeResidualPortfolio",
+  "repo_label": "thestcasa/RegimeResidualPortfolio",
+  "role": "Research pipeline design and implementation",
+  "collaboration": null,
+  "summary": "A residual-alpha forecasting and portfolio-construction research pipeline built around walk-forward evaluation, validation embargoes, MC Dropout uncertainty and transaction-cost awareness.",
+  "proof_label": "Research discipline",
+  "proof_value": "Walk-forward",
+  "proof_detail": "Temporal leakage controls and explicit baselines are part of the evaluation design.",
+  "visual": "/static/projects/regime.svg",
+  "visual_alt": "Walk-forward machine-learning diagram for regime residual portfolio research, with rolling training windows, uncertainty filtering and cost-aware portfolio construction.",
+  "problem": "Financial backtests are unusually easy to contaminate with future information or frictionless assumptions. The project focuses on whether residual-return signals can be studied with a time-aware pipeline that separates prediction from portfolio decisions.",
+  "built": "The workflow creates residual-alpha targets and market-regime features, trains models in rolling windows with an embargo, estimates predictive uncertainty with MC Dropout, filters signals, constructs monthly portfolios and evaluates turnover and transaction costs against explicit baselines.",
+  "decisions": [
+    {"title":"Make time the first constraint.","text":"Train and validation windows move forward and use an embargo to reduce contamination across adjacent periods."},
+    {"title":"Separate prediction from portfolio logic.","text":"Model outputs are inputs to a downstream signal-filtering and allocation layer rather than being treated as trades by default."},
+    {"title":"Evaluate uncertainty and friction.","text":"MC Dropout estimates predictive uncertainty, while turnover and costs keep the backtest closer to an implementable decision process."}
+  ],
+  "results": [
+    {"value":"3","label":"baseline families","detail":"equal weight, momentum and ridge-based prediction"},
+    {"value":"MC","label":"uncertainty","detail":"Dropout sampling used to filter uncertain signals"},
+    {"value":"costs","label":"included","detail":"turnover and transaction friction are tracked in the evaluation"}
+  ],
+  "constraints": [
+    "The repository explicitly does not claim guaranteed alpha or future investment performance.",
+    "Results are sensitive to universe construction, costs, non-stationarity and data quality.",
+    "The main signal of the project is time-aware ML methodology rather than a single backtest number."
+  ],
+  "demonstrates": ["PyTorch","walk-forward evaluation","temporal leakage prevention","MC Dropout","portfolio construction","research reproducibility"]
+}

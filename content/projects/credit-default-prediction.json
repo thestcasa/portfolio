@@ -1,0 +1,36 @@
+{
+  "slug": "credit-default-prediction",
+  "title": "Credit Default Prediction",
+  "eyebrow": "tabular ML · feature engineering · imbalanced classification",
+  "year": "2026",
+  "featured": true,
+  "case_study": true,
+  "repo": "https://github.com/thestcasa/chalenge_credit_default_prediction",
+  "repo_label": "thestcasa/chalenge_credit_default_prediction",
+  "role": "Modeling, feature engineering and reproducible experiment pipeline",
+  "collaboration": null,
+  "summary": "An end-to-end credit-risk classification workflow that turns repayment behaviour into robust features, tunes the operating threshold and finished first on the course leaderboard.",
+  "proof_label": "Course leaderboard",
+  "proof_value": "1st place",
+  "proof_detail": "Public Macro F1 0.721 with a CatBoost configuration and decision threshold 0.328.",
+  "visual": "/static/projects/credit.svg",
+  "visual_alt": "Credit default machine-learning pipeline from raw behaviour through feature engineering, stratified cross-validation, CatBoost and threshold selection to final predictions.",
+  "problem": "Credit default is an imbalanced classification problem where raw account fields hide the behaviour that matters. The challenge was to build a reproducible pipeline that captures repayment dynamics and optimizes for Macro F1 rather than defaulting to a 0.5 probability threshold.",
+  "built": "The pipeline validates and cleans the input data, engineers delay severity and persistence, utilization, repayment-capacity and recent-vs-historical behaviour features, runs stratified cross-validation across CatBoost experiments, and chooses the final operating threshold against the target metric.",
+  "decisions": [
+    {"title":"Engineer behaviour, not just columns.","text":"Raw repayment history, bills, payments and limits are converted into persistence, trend, exposure, capacity and coverage signals."},
+    {"title":"Treat threshold as part of the model.","text":"The final classifier is evaluated with an operating threshold of 0.328 because the target metric and class imbalance make 0.5 arbitrary."},
+    {"title":"Keep experiments reproducible.","text":"Feature flags and model parameters are controlled through configuration so leaderboard improvements can be traced to an actual experiment."}
+  ],
+  "results": [
+    {"value":"1st","label":"course leaderboard","detail":"selected final submission"},
+    {"value":"0.721","label":"public Macro F1","detail":"CatBoost final configuration"},
+    {"value":"0.328","label":"decision threshold","detail":"optimized for the target metric"}
+  ],
+  "constraints": [
+    "Leaderboard performance is an academic evaluation result, not a claim of production credit-risk performance.",
+    "The final score depends on the course dataset and evaluation split.",
+    "The project prioritizes reproducibility and operating-point selection over model novelty."
+  ],
+  "demonstrates": ["CatBoost","imbalanced learning","behavioural feature engineering","cross-validation","threshold optimization","reproducible experiments"]
+}

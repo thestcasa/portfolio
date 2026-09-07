@@ -5,6 +5,9 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 
+# Generated static site
+dist/
+
 # Local configuration
 .env
 .env.*

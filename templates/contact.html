@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block extra_head %}<script defer src="/static/js/contact.js"></script>{% endblock %}
 {% block content %}
 <section class="page-intro section contact-hero">
   <div class="shell intro-grid">
@@ -15,7 +16,7 @@
       <div class="direct-links"><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a><a href="{{ site.github }}" target="_blank" rel="noopener">GitHub ↗</a><a href="{{ site.cv }}" target="_blank" rel="noopener">CV ↗</a></div>
     </aside>
     <div>
-      {% if form_status %}<div class="form-status form-status-{{ form_status.type }}" role="status">{{ form_status.text }}</div>{% endif %}
+      {% if form_status %}<div class="form-status form-status-{{ form_status.type }}" role="status" data-contact-status>{{ form_status.text }}</div>{% endif %}
       <form class="contact-form" action="/contact" method="post" novalidate>
         <div class="form-two">
           <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" value="{{ form.name | default('') }}" aria-describedby="name-error" {% if form_errors.name %}aria-invalid="true"{% endif %} required>{% if form_errors.name %}<p class="field-error" id="name-error">{{ form_errors.name }}</p>{% endif %}</div>

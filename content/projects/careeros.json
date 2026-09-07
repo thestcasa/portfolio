@@ -1,0 +1,37 @@
+{
+  "slug": "careeros",
+  "title": "CareerOS",
+  "eyebrow": "AI systems · product engineering",
+  "year": "2026",
+  "featured": true,
+  "case_study": true,
+  "repo": "https://github.com/thestcasa/carrerOS",
+  "repo_label": "thestcasa/carrerOS",
+  "role": "Product architecture and implementation",
+  "collaboration": null,
+  "summary": "A safety-gated AI application platform where model workers can propose, but deterministic software owns workflow state, authorization and auditability.",
+  "proof_label": "Core design",
+  "proof_value": "Fail-closed",
+  "proof_detail": "Submission authorization is issued only by a deterministic gate.",
+  "visual": "/static/projects/careeros.svg",
+  "visual_alt": "CareerOS architecture showing candidate configuration and jobs flowing through an orchestrator, AI workers, a deterministic submission gate and audit archive.",
+  "problem": "Most AI job-application demos stop at generating text. The harder engineering problem is everything around that generation: candidate configuration, evidence traceability, workflow state, independent review, persistence, policy checks and an audit trail that cannot be silently bypassed.",
+  "built": "CareerOS separates AI proposals from authorization. Candidate data is schema-validated and versioned; applications move through an explicit state machine; three isolated worker protocols handle analysis, document generation and review; and only a deterministic SubmissionGate can issue an authorization. A FastAPI/PostgreSQL backend and a typed Next.js control plane expose the system.",
+  "decisions": [
+    {"title":"AI proposes. Software decides.","text":"The orchestrator can sequence model workers but cannot authorize submission. Missing, unknown or failed prerequisites deny by default."},
+    {"title":"Candidate facts live outside the engine.","text":"Profiles are strict configuration, versioned into deterministic snapshots with source hashes so later decisions can be traced to the exact evidence used."},
+    {"title":"Workflow state is explicit.","text":"Enum-backed allow-listed transitions and idempotency keys make application state inspectable instead of hiding it inside conversational memory."},
+    {"title":"Auditability is a product requirement.","text":"Application archives use canonical snapshots plus SHA-256 manifests so additions, deletions and modifications can be detected."}
+  ],
+  "results": [
+    {"value":"4","label":"service layers","detail":"Next.js control plane, FastAPI API, PostgreSQL, Redis coordination boundary"},
+    {"value":"3","label":"isolated AI roles","detail":"job analysis, document generation, independent review"},
+    {"value":"1","label":"authorization authority","detail":"the deterministic SubmissionGate"}
+  ],
+  "constraints": [
+    "The current milestone intentionally excludes live browser submission and CAPTCHA / anti-bot workarounds.",
+    "Only fictional candidate data is committed.",
+    "The current model workers are protocol boundaries with deterministic fakes; live model adapters are a later integration point."
+  ],
+  "demonstrates": ["AI systems architecture","FastAPI / typed APIs","state machines","PostgreSQL / migrations","auditability","product-oriented frontend engineering"]
+}

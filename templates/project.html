@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="case-study">
+  <header class="case-hero section">
+    <div class="shell">
+      <a class="back-link" href="/work">← All work</a>
+      <div class="case-title-grid">
+        <div>
+          <p class="kicker">{{ project.eyebrow }}</p>
+          <h1>{{ project.title }}</h1>
+          <p class="case-deck">{{ project.summary }}</p>
+        </div>
+        <dl class="case-meta">
+          <div><dt>Year</dt><dd>{{ project.year }}</dd></div>
+          <div><dt>Role</dt><dd>{{ project.role }}</dd></div>
+          <div><dt>Repository</dt><dd><a href="{{ project.repo }}" target="_blank" rel="noopener">{{ project.repo_label }} ↗</a></dd></div>
+        </dl>
+      </div>
+      {% if project.collaboration %}<p class="collab-banner">Collaboration note — {{ project.collaboration }}</p>{% endif %}
+    </div>
+  </header>
+
+  <section class="section case-visual-section">
+    <div class="shell">
+      <figure class="case-figure"><img src="{{ project.visual }}" alt="{{ project.visual_alt }}"><figcaption>Diagram based on the repository architecture and reported evaluation path — not a fabricated product screenshot.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section case-summary-section">
+    <div class="shell case-summary-grid">
+      <div><p class="micro">Problem</p><p class="large-copy">{{ project.problem }}</p></div>
+      <div><p class="micro">What I built</p><p>{{ project.built }}</p></div>
+      <div class="case-proof-block"><span>{{ project.proof_label }}</span><strong>{{ project.proof_value }}</strong><p>{{ project.proof_detail }}</p></div>
+    </div>
+  </section>
+
+  <section class="section section-ruled">
+    <div class="shell">
+      <div class="section-heading split-heading"><div><p class="kicker">Engineering decisions</p><h2>Where the project becomes more than a demo.</h2></div><p>The details that matter are usually in the constraints: who is allowed to decide, what gets measured, what is kept separate, and how failure is represented.</p></div>
+      <div class="decision-grid">
+        {% for decision in project.decisions %}
+        <article class="decision"><span>{{ "%02d" | format(loop.index) }}</span><h3>{{ decision.title }}</h3><p>{{ decision.text }}</p></article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section metrics-section">
+    <div class="shell">
+      <div class="section-heading"><p class="kicker">Evidence</p><h2>What the repository actually supports.</h2></div>
+      <div class="metric-grid">
+        {% for result in project.results %}
+        <div class="metric"><strong>{{ result.value }}</strong><span>{{ result.label }}</span><p>{{ result.detail }}</p></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section limitations-section">
+    <div class="shell limitation-grid">
+      <div><p class="kicker">Limits</p><h2>What I am not claiming.</h2></div>
+      <ul>{% for constraint in project.constraints %}<li>{{ constraint }}</li>{% endfor %}</ul>
+    </div>
+  </section>
+
+  <section class="section demonstrates-section">
+    <div class="shell demonstrates-grid">
+      <div><p class="kicker">Signal</p><h2>What this project demonstrates.</h2></div>
+      <div class="signal-list">{% for item in project.demonstrates %}<span>{{ item }}</span>{% endfor %}</div>
+    </div>
+  </section>
+
+  <section class="section next-project-band">
+    <div class="shell next-project-grid"><p>Want to inspect the implementation?</p><a class="button button-primary" href="{{ project.repo }}" target="_blank" rel="noopener">Open repository ↗</a><a class="button button-quiet" href="/contact">Ask me about it</a></div>
+  </section>
+</article>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-intro section">
+  <div class="shell intro-grid">
+    <div><p class="kicker">Work</p><h1>Selected systems, experiments and engineering decisions.</h1></div>
+    <div><p class="large-copy">Not every repository deserves equal weight. These are the projects that best show how I design systems, evaluate models and make technical trade-offs.</p><p class="muted">Collaborative repositories are labelled explicitly. Academic results are presented as academic results.</p></div>
+  </div>
+</section>
+
+<section class="section work-index-section">
+  <div class="shell">
+    <div class="project-list work-list">
+      {% for project in selected_projects %}
+      <article class="project-row">
+        <div class="project-index">{{ "%02d" | format(loop.index) }}</div>
+        <div class="project-copy">
+          <p class="micro">{{ project.eyebrow }} · {{ project.year }}</p>
+          <h2><a href="/work/{{ project.slug }}">{{ project.title }}</a></h2>
+          <p>{{ project.summary }}</p>
+          <p class="role-line"><span>Role</span>{{ project.role }}</p>
+          {% if project.collaboration %}<p class="collab-note">{{ project.collaboration }}</p>{% endif %}
+          <div class="project-proof"><span>{{ project.proof_label }}</span><strong>{{ project.proof_value }}</strong><small>{{ project.proof_detail }}</small></div>
+          <div class="text-links"><a href="/work/{{ project.slug }}">Case study →</a><a href="{{ project.repo }}" target="_blank" rel="noopener">{{ project.repo_label }} ↗</a></div>
+        </div>
+        <a class="project-visual" href="/work/{{ project.slug }}"><img src="{{ project.visual }}" alt="{{ project.visual_alt }}" loading="lazy"></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if archive_projects %}
+<section class="section archive-section">
+  <div class="shell">
+    <div class="section-heading"><p class="kicker">Archive</p><h2>Smaller coursework and technical explorations.</h2></div>
+    <div class="archive-table">
+      {% for project in archive_projects %}
+      <a class="archive-row" href="{{ project.repo }}" target="_blank" rel="noopener">
+        <span>{{ project.year }}</span><strong>{{ project.title }}</strong><p>{{ project.summary }}</p><span>GitHub ↗</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

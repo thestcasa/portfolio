@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-intro section consulting-hero">
+  <div class="shell intro-grid">
+    <div><p class="kicker">Consulting</p><h1>Start with the workflow, not the AI label.</h1></div>
+    <div><p class="large-copy">I help small teams find and build practical automation, data and internal-AI systems where repetitive work, fragmented tools or poor information flow are already creating friction.</p><p class="muted">No fake transformation story. No invented case-study metrics. The current proof is my engineering work and hands-on operational experience; external consulting cases will be added only when they exist.</p></div>
+  </div>
+</section>
+
+<section class="section service-section">
+  <div class="shell">
+    <div class="section-heading split-heading"><div><p class="kicker">Recognisable problems</p><h2>Four places I can be useful.</h2></div><p>If the right answer is a deterministic integration, that is the answer. LLMs belong in the parts of the workflow that genuinely need language or reasoning.</p></div>
+    <div class="service-list">
+      {% for service in services %}
+      <article class="service-row">
+        <span class="service-number">{{ service.number }}</span>
+        <div><h3>{{ service.title }}</h3><p class="micro">Typical problem</p><p>{{ service.problem }}</p></div>
+        <div><p class="micro">Possible intervention</p><p>{{ service.response }}</p><p class="service-examples">{{ service.examples | join(' · ') }}</p></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="shell consulting-principle">
+    <p class="kicker">Working principle</p>
+    <blockquote>“Use the least complex system that reliably removes the problem.”</blockquote>
+    <div class="principle-grid">
+      <p>That might be an API integration, a scheduled data pipeline, a small internal tool, a retrieval system or an LLM workflow with explicit validation. The implementation choice comes after understanding the process.</p>
+      <p>My background across software engineering, data work and RevOps is useful here because the problem usually crosses more than one layer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section engagement-section">
+  <div class="shell">
+    <div class="section-heading"><p class="kicker">A sensible path</p><h2>From messy process to something maintainable.</h2></div>
+    <div class="engagement-grid">
+      {% for item in engagement %}
+      <article><span>{{ item.step }}</span><h3>{{ item.title }}</h3><p>{{ item.text }}</p></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section credibility-section">
+  <div class="shell credibility-grid">
+    <div><p class="kicker">Current proof</p><h2>Technical depth plus operational context.</h2></div>
+    <div>
+      <p class="large-copy">At papernest I work inside RevOps across data, AI and automation. My public work ranges from stateful AI systems and LLM evaluation to reproducible ML pipelines and backend services.</p>
+      <div class="text-links"><a href="/work/careeros">CareerOS case study →</a><a href="/work/tiser-temporal-reasoning">TISER research →</a><a href="/about">Background →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-band">
+  <div class="shell contact-band-grid"><p class="kicker">Start small</p><h2>Tell me the process that is wasting time, breaking handoffs or hiding useful information.</h2><div class="button-row"><a class="button button-primary" href="/contact?topic=consulting">Discuss the problem</a><a class="button button-quiet" href="mailto:{{ site.email }}">Email directly</a></div></div>
+</section>
+{% endblock %}

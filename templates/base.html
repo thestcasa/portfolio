@@ -1,173 +1,77 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{{ personal.name }} — Portfolio{% endblock %}</title>
-  <meta name="description" content="{{ personal.bio }}" />
-
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts: Playfair Display (display) + DM Mono (code/accent) + DM Sans (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind config + custom tokens -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['"Playfair Display"', 'Georgia', 'serif'],
-            mono:    ['"DM Mono"', 'monospace'],
-            sans:    ['"DM Sans"', 'sans-serif'],
-          },
-          colors: {
-            ink:    '#0f0e0c',
-            paper:  '#f5f2eb',
-            cream:  '#ede9df',
-            accent: '#c84b31',      /* terracotta / Italian red */
-            muted:  '#8a8070',
-            border: '#d8d2c4',
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.6s ease forwards',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%':   { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    /* ── Global resets & base ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { font-family: 'DM Sans', sans-serif; background: #f5f2eb; color: #0f0e0c; }
-
-    /* ── Staggered section animations ────────────────────── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── Scrollbar styling ────────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #ede9df; }
-    ::-webkit-scrollbar-thumb { background: #c84b31; border-radius: 3px; }
-
-    /* ── Timeline left line ───────────────────────────────── */
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #c84b31, transparent);
-    }
-
-    /* ── Tag pill ──────────────────────────────────────────── */
-    .tag {
-      display: inline-block;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.04em;
-      padding: 0.2rem 0.55rem;
-      border-radius: 2px;
-      background: #ede9df;
-      color: #8a8070;
-      border: 1px solid #d8d2c4;
-    }
-    .tag:hover { background: #c84b31; color: #f5f2eb; border-color: #c84b31; transition: 0.2s; }
-
-    /* ── Nav link underline effect ────────────────────────── */
-    .nav-link {
-      position: relative;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: #8a8070;
-      transition: color 0.2s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: #c84b31;
-      transition: width 0.25s ease;
-    }
-    .nav-link:hover { color: #0f0e0c; }
-    .nav-link:hover::after { width: 100%; }
-
-    /* ── Section divider ───────────────────────────────────── */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #c84b31;
-    }
-  </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alessandro Casadei">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.og_image }}">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/tokens.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/work.css">
+  <link rel="stylesheet" href="/static/css/pages.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <script type="application/ld+json">{{ person_schema | tojson }}</script>
+  {% if project_schema is defined %}<script type="application/ld+json">{{ project_schema | tojson }}</script>{% endif %}
   {% block extra_head %}{% endblock %}
 </head>
-
-<body class="bg-paper text-ink antialiased">
-
-  <!-- ── Navigation ──────────────────────────────────────── -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-border">
-    <nav class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-
-      <ul class="hidden md:flex items-center gap-8">
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#projects"   class="nav-link">Projects</a></li>
-        <li><a href="#education"  class="nav-link">Education</a></li>
-        <li><a href="#contact"    class="nav-link">Contact</a></li>
-      </ul>
-      <a href="/static/Alessandro_Casadei_CV.pdf" download
-         class="hidden md:inline-flex items-center gap-1.5 text-xs font-mono tracking-wide
-                border border-accent text-accent px-3 py-1.5 rounded hover:bg-accent hover:text-paper transition-colors">
-        ↓ Resume
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="/" aria-label="Alessandro Casadei home">
+        <span class="brand-mark" aria-hidden="true">AC</span>
+        <span class="brand-copy"><strong>Alessandro Casadei</strong><small>AI · Data · Automation</small></span>
       </a>
-    </nav>
-  </header>
-
-  <!-- ── Page Content ────────────────────────────────────── -->
-  <main class="pt-14">
-    {% block content %}{% endblock %}
-  </main>
-
-  <!-- ── Footer ──────────────────────────────────────────── -->
-  <footer class="border-t border-border bg-cream py-8 mt-24">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-muted text-xs font-mono">
-        © {{ 2026 }} {{ personal.name }} — Built with FastAPI + Jinja2
-      </p>
-      <div class="flex items-center gap-5">
-        <a href="{{ personal.social.github }}"   target="_blank" class="text-muted hover:text-accent transition-colors text-xs font-mono">GitHub</a>
-        <a href="{{ personal.social.linkedin }}" target="_blank" class="text-muted hover:text-accent transition-colors text-xs font-mono">LinkedIn</a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/work" {% if active == 'work' %}aria-current="page"{% endif %}>Work</a>
+        <a href="/consulting" {% if active == 'consulting' %}aria-current="page"{% endif %}>Consulting</a>
+        <a href="/about" {% if active == 'about' %}aria-current="page"{% endif %}>About</a>
+        <a href="/contact" {% if active == 'contact' %}aria-current="page"{% endif %}>Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="cv-link" href="{{ site.cv }}" target="_blank" rel="noopener">CV ↗</a>
+        <details class="mobile-nav">
+          <summary>Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="/work">Work</a>
+            <a href="/consulting">Consulting</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="{{ site.cv }}" target="_blank" rel="noopener">CV ↗</a>
+          </nav>
+        </details>
       </div>
     </div>
+  </header>
+
+  <main id="main">{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <p class="footer-name">{{ site.name }}</p>
+        <p class="footer-note">AI, data and automation systems with evidence, interfaces and failure modes taken seriously.</p>
+      </div>
+      <div class="footer-links">
+        <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:{{ site.email }}">Email</a>
+      </div>
+      <p class="footer-meta">© 2026 · Built with FastAPI + Jinja · no analytics by default</p>
+    </div>
   </footer>
-
-  <!-- ── Intersection Observer for scroll reveals ────────── -->
-  <script>
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-
-  {% block extra_scripts %}{% endblock %}
 </body>
 </html>

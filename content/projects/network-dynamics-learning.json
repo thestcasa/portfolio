@@ -1,0 +1,16 @@
+{
+  "slug": "network-dynamics-learning",
+  "title": "Network Dynamics & Learning",
+  "eyebrow": "networks · stochastic systems · simulation",
+  "year": "2026",
+  "featured": false,
+  "case_study": false,
+  "repo": "https://github.com/thestcasa/network-dynamics-learning",
+  "repo_label": "thestcasa/network-dynamics-learning",
+  "role": "Coursework implementations",
+  "collaboration": null,
+  "summary": "Executable Python work across flows, centrality, Wardrop equilibria, random walks, opinion dynamics, epidemic models and network games.",
+  "proof_label": "Scope",
+  "proof_value": "3 modules",
+  "proof_detail": "network optimization, stochastic dynamics and epidemic/game simulations."
+}

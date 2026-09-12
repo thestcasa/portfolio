@@ -25,6 +25,14 @@
   <link rel="stylesheet" href="/static/css/responsive.css">
   <script type="application/ld+json">{{ person_schema | tojson }}</script>
   {% if project_schema is defined %}<script type="application/ld+json">{{ project_schema | tojson }}</script>{% endif %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M2KQ13WTP3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M2KQ13WTP3');
+  </script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -70,7 +78,7 @@
         <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="mailto:{{ site.email }}">Email</a>
       </div>
-      <p class="footer-meta">© 2026 · Built with FastAPI + Jinja · no analytics by default</p>
+      <p class="footer-meta">© 2026 · Built with FastAPI + Jinja</p>
     </div>
   </footer>
 </body>
